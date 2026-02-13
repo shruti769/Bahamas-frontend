@@ -1,8 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import Image from "next/image";
-import Link from "next/link";
+import Image from 'next/image';
 import { ArrowLeft } from "lucide-react";
 
 export default function ForgotPasswordPage() {
@@ -22,51 +21,56 @@ export default function ForgotPasswordPage() {
   };
 
   return (
-    <div className="min-h-screen bg-[#e5e5e5] flex items-center justify-center p-8">
-      
-      {/* Main White Container */}
-      <div className="w-full max-w-6xl  min-h-[95vh] bg-white rounded-3xl shadow-xl overflow-hidden grid md:grid-cols-2">
-        
+    <div className="min-h-screen bg-gray-50 flex items-center justify-center px-4 py-8">
+      <div className="max-w-6xl w-full grid lg:grid-cols-2 gap-8 items-center">
+
         {/* LEFT IMAGE */}
-        <div className="relative md:block">
-          <Image
+        <div className="hidden lg:block">
+          <img
             src="/assets/forgot-bg.png"
-            alt="Beach"
-            fill
-            className="object-cover"
+            alt="Forgot Password"
+            className="w-full h-[600px] object-cover rounded-3xl shadow-lg"
           />
         </div>
 
-        {/* RIGHT SECTION */}
-        <div className="flex items-center justify-center bg-[#f3f3f3] p-12">
+        {/* RIGHT SIDE - Form */}
+        <div className="flex items-center justify-center">
           
           {/* Form Card */}
-          <div className="w-full max-w-lg bg-white rounded-2xl shadow-md p-10">
+          <div className="bg-white rounded-3xl shadow-2xl px-12 py-8 w-full max-w-lg mx-auto">
 
-            {/* Top Row */}
-            <div className="flex items-center justify-between mb-8">
-              <ArrowLeft className="w-5 h-5 cursor-pointer text-gray-700" />
+            {/* Header with Back Arrow and Logo */}
+            <div className="flex items-center justify-between mb-4">
+              <button type="button" className="text-gray-600 hover:text-gray-900">
+                <ArrowLeft className="w-5 h-5" />
+              </button>
 
-              <div className="flex items-center gap-2">
-                <span className="text-xl">🌎</span>
-                <span className="font-semibold text-gray-800">
-                  BahaMoments
-                </span>
+              {/* Logo */}
+              <div className="flex justify-center">
+                <Image
+                  src="/assets/LOGO(bahamas).png"
+                  alt="BahaMoments Logo"
+                  width={130}
+                  height={130}
+                  className="object-contain"
+                />
               </div>
 
-              <div className="w-5" />
+              {/* Spacer for alignment */}
+              <div className="w-5"></div>
             </div>
 
-            {/* Heading */}
-            <h2 className="text-4xl font-bold text-gray-900 mb-8">
+            {/* Title */}
+            <h1 className="text-3xl font-bold text-center mb-6 text-gray-900">
               Forget your Account?
-            </h2>
+            </h1>
 
-            <form onSubmit={handleSubmit} className="space-y-6">
+            {/* Form */}
+            <form onSubmit={handleSubmit} className="space-y-4">
               
-              {/* Email Field */}
+              {/* Email Input */}
               <div>
-                <label className="block text-sm text-gray-700 mb-2">
+                <label className="block text-sm font-medium text-gray-700 mb-1.5">
                   Email<span className="text-red-500">*</span>
                 </label>
                 <input
@@ -75,32 +79,32 @@ export default function ForgotPasswordPage() {
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                   required
-                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#3E7FA3]"
+                  className="w-full bg-white border border-gray-300 rounded-lg px-4 py-3 outline-none focus:ring-2 focus:ring-[#5BA8C8] focus:border-transparent transition"
                 />
               </div>
 
-              {/* Button */}
+              {/* Submit Button */}
               <button
                 type="submit"
                 disabled={loading}
-                className="w-full bg-[#3E7FA3] hover:bg-[#346b89] text-white py-3 rounded-lg transition"
+                className="w-full bg-[#5BA8C8] hover:bg-[#4a97b5] text-white font-semibold py-3.5 rounded-lg transition shadow-sm"
               >
-                {loading ? "Sending..." : "Submit"}
+                {loading ? "Submitting..." : "Submit"}
               </button>
 
               {/* Success Message */}
               {message && (
-                <p className="text-green-600 text-sm text-center">
+                <p className="text-green-600 text-sm text-center mt-4">
                   {message}
                 </p>
               )}
 
               {/* Login Link */}
-              <p className="text-center text-sm text-gray-600">
+              <p className="text-center text-sm text-gray-600 mt-4">
                 Remember ?{" "}
-                <Link href="/login" className="font-semibold text-black">
+                <a href="/login" className="text-gray-900 font-semibold hover:text-[#5BA8C8] transition underline">
                   Login
-                </Link>
+                </a>
               </p>
 
             </form>

@@ -27,12 +27,11 @@ export default function LoginPage() {
 
     try {
       // ✅ Fake frontend-only login
-
       const fakeToken = "my-demo-token-123";
 
       const fakeUser = {
-        firstName: "Pallvi",
-        lastName: "Sharma",
+        firstName: "John",
+        lastName: "Doe",
         email: formData.email,
         mobile: "9999999999",
         address: "India",
@@ -53,42 +52,43 @@ export default function LoginPage() {
   };
 
   return (
-    <div className="min-h-screen bg-gray-100 flex items-center justify-center px-6 py-10">
-      <div className="max-w-5xl w-full grid md:grid-cols-2 gap-12 items-center">
+    <div className="min-h-screen bg-gray-50 flex items-center justify-center px-4 py-8">
+      <div className="max-w-6xl w-full grid lg:grid-cols-2 gap-8 items-center">
 
         {/* LEFT IMAGE */}
-        <div>
+        <div className="hidden lg:block">
           <img
             src="/assets/login.png"
             alt="Login"
-            className="w-full h-[550px] object-cover rounded-2xl"
+            className="w-full h-[600px] object-cover rounded-3xl shadow-lg"
           />
         </div>
 
         {/* RIGHT LOGIN CARD */}
-        <div className="bg-white rounded-[28px] shadow-xl px-16 py-20 max-w-xl w-full mx-auto">
+        <div className="bg-white rounded-3xl shadow-2xl px-12 py-6 w-full max-w-lg mx-auto">
 
-          <div className="flex justify-center items-center gap-2 mb-6">
-           <div className="flex justify-center mb-6">
-                         <Image
-                            src="/assets/LOGO(bahamas).png"
-                            alt="BahaMoments Logo"
-                            width={150}
-                            height={150}
-                            className="object-contain"
-                            />
-                   
-                    </div>
+          {/* Logo */}
+          <div className="flex justify-center mb-4">
+            <Image
+              src="/assets/LOGO(bahamas).png"
+              alt="BahaMoments Logo"
+              width={100}
+              height={100}
+              className="object-contain"
+            />
           </div>
 
-          <h1 className="text-4xl font-semibold text-center mb-10 tracking-relaxed">
+          {/* Title */}
+          <h1 className="text-3xl font-bold text-center mb-6 text-gray-900">
             Login
           </h1>
 
-          <form onSubmit={handleSubmit} className="space-y-8">
+          {/* Form */}
+          <form onSubmit={handleSubmit} className="space-y-4">
 
+            {/* Email Field */}
             <div>
-              <label className="block text-sm text-gray-600 mb-2">
+              <label className="block text-sm font-medium text-gray-700 mb-1.5">
                 Email<span className="text-red-500">*</span>
               </label>
               <input
@@ -98,12 +98,13 @@ export default function LoginPage() {
                 value={formData.email}
                 onChange={handleChange}
                 required
-                className="w-full bg-white border border-[#A7C4D6] rounded-lg px-4 py-2.5 outline-none focus:ring-2 focus:ring-[#4F8FA8]"
+                className="w-full bg-white border border-gray-300 rounded-lg px-4 py-3 outline-none focus:ring-2 focus:ring-[#5BA8C8] focus:border-transparent transition"
               />
             </div>
 
+            {/* Password Field */}
             <div>
-              <label className="block text-sm text-gray-600 mb-2">
+              <label className="block text-sm font-medium text-gray-700 mb-1.5">
                 Password<span className="text-red-500">*</span>
               </label>
               <input
@@ -113,36 +114,38 @@ export default function LoginPage() {
                 value={formData.password}
                 onChange={handleChange}
                 required
-                className="w-full bg-white border border-[#A7C4D6] rounded-lg px-4 py-2.5 outline-none focus:ring-2 focus:ring-[#4F8FA8]"
+                className="w-full bg-white border border-gray-300 rounded-lg px-4 py-3 outline-none focus:ring-2 focus:ring-[#5BA8C8] focus:border-transparent transition"
               />
             </div>
 
             {/* Reset Password Link */}
-            <div className="text-right -mt-4">
+            <div className="text-right">
               <button 
                 type="button"
                 onClick={() => router.push("/reset-password")}
-                className="text-sm text-gray-600 hover:text-[#4F8FA8] font-medium transition"
+                className="text-sm text-gray-600 hover:text-[#5BA8C8] font-medium transition"
               >
                 Reset Password?
               </button>
             </div>
 
+            {/* Login Button */}
             <button
-                type="login"
-                className="w-full bg-blue-500 hover:bg-blue-600 text-white font-semibold py-3 rounded-lg mt-6 transition"
-              >
-                Login
-              </button>
+              type="submit"
+              disabled={loading}
+              className="w-full bg-[#5BA8C8] hover:bg-[#4a97b5] text-white font-semibold py-3.5 rounded-lg transition shadow-sm"
+            >
+              {loading ? "Loading..." : "Login"}
+            </button>
 
           </form>
 
           {/* Signup Link */}
-          <p className="text-center text-sm text-gray-600 mt-6">
+          <p className="text-center text-sm text-gray-600 mt-4">
             Don't have an Account?{" "}
             <button 
               onClick={() => router.push("/signup")}
-              className="text-gray-900 font-semibold hover:text-[#4F8FA8] transition"
+              className="text-gray-900 font-semibold hover:text-[#5BA8C8] transition underline"
             >
               Signup
             </button>

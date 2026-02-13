@@ -1,6 +1,9 @@
 'use client';
 
 import { useState, useRef, useEffect } from 'react';
+import Image from 'next/image';
+import { ArrowLeft } from "lucide-react";
+
 
 export default function OTPVerification() {
   const OTP_LENGTH = 4;
@@ -67,66 +70,55 @@ export default function OTPVerification() {
   };
 
   return (
-    <div className="min-h-screen flex">
-      
-      {/* LEFT IMAGE */}
-      <div className="hidden md:block md:w-1/2 relative">
-        <img
-          src="/assets/otp.png"
-          alt="Beach resort"
-          className="w-full h-full object-cover"
-        />
-      </div>
+    <div className="min-h-screen bg-gray-50 flex items-center justify-center px-4 py-8">
+      <div className="max-w-6xl w-full grid lg:grid-cols-2 gap-8 items-center">
 
-      {/* RIGHT FORM SECTION */}
-      <div className="w-full md:w-1/2 flex items-center justify-center bg-gray-50 p-8">
-        <div className="w-full max-w-lg bg-white rounded-2xl shadow-lg p-10">
+        {/* LEFT IMAGE */}
+        <div className="hidden lg:block">
+          <img
+            src="/assets/otp.png"
+            alt="OTP Verification"
+            className="w-full h-[600px] object-cover rounded-3xl shadow-lg"
+          />
+        </div>
 
-          {/* HEADER */}
-          <div className="mb-10 relative">
+        {/* RIGHT OTP CARD */}
+        <div className="bg-white rounded-3xl shadow-2xl px-12 py-10 w-full max-w-lg mx-auto">
 
-            {/* Back Button */}
-            <button className="absolute left-0 top-0 text-gray-600 hover:text-gray-900 transition-colors">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                className="h-6 w-6"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M15 19l-7-7 7-7"
+        <div className="flex items-center justify-between mb-4">
+              <button type="button" className="text-gray-600 hover:text-gray-900">
+                <ArrowLeft className="w-5 h-5" />
+              </button>
+
+              {/* Logo */}
+              <div className="flex justify-center">
+                <Image
+                  src="/assets/LOGO(bahamas).png"
+                  alt="BahaMoments Logo"
+                  width={130}
+                  height={130}
+                  className="object-contain"
                 />
-              </svg>
-            </button>
-
-            {/* Logo + Title */}
-            <div className="flex flex-col items-center text-center">
-              <div className="flex items-center gap-2 mb-6">
-                <div className="w-8 h-8 bg-blue-500 rounded-full flex items-center justify-center">
-                  <span className="text-white text-sm font-semibold">B</span>
-                </div>
-                <span className="text-gray-800 font-semibold text-lg">
-                  BahaMoments
-                </span>
               </div>
 
-              <h1 className="text-4xl font-bold text-gray-900">
-                OTP for verification
-              </h1>
+              {/* Spacer for alignment */}
+              <div className="w-5"></div>
             </div>
-          </div>
+
+         
+
+          {/* Title */}
+          <h1 className="text-3xl font-semibold text-center mb-8 text-gray-900">
+            OTP for verification
+          </h1>
 
           {/* OTP INPUT */}
-          <div className="mb-10">
-            <label className="block text-sm font-medium text-gray-700 mb-4 text-center">
-              OTP*
+          <div className="mb-8">
+            <label className="block text-sm font-medium text-gray-700 mb-4">
+              OTP<span className="text-red-500">*</span>
             </label>
 
-            <div className="flex justify-between">
+            <div className="flex justify-start gap-3">
               {otp.map((digit, index) => (
                 <input
                   key={index}
@@ -138,7 +130,7 @@ export default function OTPVerification() {
                   onChange={(e) => handleChange(index, e.target.value)}
                   onKeyDown={(e) => handleKeyDown(index, e)}
                   onPaste={handlePaste}
-                  className="w-16 h-16 text-center text-2xl font-semibold border-2 border-gray-300 rounded-lg focus:border-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all"
+                  className="w-14 h-14 text-center text-xl font-semibold bg-white border border-gray-300 rounded-lg outline-none focus:ring-2 focus:ring-[#5BA8C8] focus:border-transparent transition"
                 />
               ))}
             </div>
@@ -147,7 +139,7 @@ export default function OTPVerification() {
           {/* SUBMIT BUTTON */}
           <button
             onClick={handleSubmit}
-            className="w-full bg-blue-500 hover:bg-blue-600 text-white font-semibold py-4 rounded-lg transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
+            className="w-full bg-[#5BA8C8] hover:bg-[#4a97b5] text-white font-semibold py-3.5 rounded-lg transition shadow-sm"
           >
             Submit OTP
           </button>

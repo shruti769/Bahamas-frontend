@@ -1,6 +1,6 @@
 const TripCard = ({ trip }) => {
   return (
-    <div className="bg-white rounded-xl shadow-md hover:shadow-xl transition duration-300 overflow-hidden">
+    <div className="bg-white rounded-xl shadow-sm hover:shadow-xl transition duration-300 overflow-hidden">
       
       <img
         src={trip.image}
@@ -23,12 +23,12 @@ const TripCard = ({ trip }) => {
           <span className="text-orange-400">
             ★★★★★
           </span>
-          <span className="text-xs text-gray-500">
+          <span className="text-xs text-black">
             ({trip.reviews})
           </span>
         </div>
 
-        <p className="text-xs text-gray-700 mt-2 font-medium">
+        <p className="text-xs text-black mt-2 font-medium">
           {trip.price}
         </p>
       </div>

@@ -5,8 +5,8 @@ import Image from "next/image";
 
 export default function WhyWeExist() {
   return (
-    <section className="bg-[#f3f4f6] py-24">
-      <div className="max-w-7xl mx-auto px-6 grid md:grid-cols-2 gap-16 items-start">
+    <section className=" py-24">
+      <div className="max-w-5xl mx-auto px-6 grid md:grid-cols-2 gap-16 items-start">
         {/* LEFT CONTENT */}
         <div>
           <h2 className="text-4xl font-bold text-gray-800 mb-6">
@@ -41,10 +41,10 @@ export default function WhyWeExist() {
             ))}
             </ul>
 
-          {/* BUTTON */}
+       
           {/* BUTTON */}
           <Link
-            href="/packages"
+            href="/search"
             className="inline-block bg-[#4B8EAF] hover:bg-[#3a7590] text-white px-10 py-4 rounded-full text-lg transition duration-300 shadow-sm"
           >
             Explore the package

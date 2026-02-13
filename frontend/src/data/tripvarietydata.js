@@ -4,7 +4,7 @@ export const tripvarietydata = [
     title: "Lorem Ipsum",
     description:
       "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
-    image: "/assets/trip1.png",
+    image: "/assets/option1.png",
     rating: 4.9,
     reviews: 2323,
     price: "From $1020 onwards per person",
@@ -14,7 +14,7 @@ export const tripvarietydata = [
     title: "Lorem Ipsum",
     description:
       "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
-    image: "/assets/trip1.png",
+    image: "/assets/option2.png",
     rating: 4.9,
     reviews: 2323,
     price: "From $1020 onwards per person",
@@ -24,7 +24,7 @@ export const tripvarietydata = [
     title: "Lorem Ipsum",
     description:
       "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
-    image: "/assets/trip1.png",
+    image: "/assets/option3.png",
     rating: 4.9,
     reviews: 2323,
     price: "From $1020 onwards per person",
@@ -34,7 +34,7 @@ export const tripvarietydata = [
     title: "Lorem Ipsum",
     description:
       "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
-    image: "/assets/trip1.png",
+    image: "/assets/option4.png",
     rating: 4.9,
     reviews: 2323,
     price: "From $1020 onwards per person",
@@ -44,7 +44,7 @@ export const tripvarietydata = [
     title: "Lorem Ipsum",
     description:
       "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
-    image: "/assets/trip1.png",
+    image: "/assets/option1.png",
     rating: 4.9,
     reviews: 2323,
     price: "From $1020 onwards per person",
@@ -54,7 +54,7 @@ export const tripvarietydata = [
     title: "Lorem Ipsum",
     description:
       "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
-    image: "/assets/trip1.png",
+    image: "/assets/option2.png",
     rating: 4.9,
     reviews: 2323,
     price: "From $1020 onwards per person",
@@ -64,7 +64,7 @@ export const tripvarietydata = [
     title: "Lorem Ipsum",
     description:
       "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
-    image: "/assets/trip1.png",
+    image: "/assets/option3.png",
     rating: 4.9,
     reviews: 2323,
     price: "From $1020 onwards per person",
@@ -74,7 +74,7 @@ export const tripvarietydata = [
     title: "Lorem Ipsum",
     description:
       "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
-    image: "/assets/trip1.png",
+    image: "/assets/option4.png",
     rating: 4.9,
     reviews: 2323,
     price: "From $1020 onwards per person",

@@ -1,8 +1,8 @@
 'use client';
 
 import { useState } from 'react';
-import Image from "next/image";
 import { Eye, EyeOff } from 'lucide-react';
+import Image from 'next/image';
 
 export default function ResetPassword() {
   const [formData, setFormData] = useState({
@@ -13,20 +13,6 @@ export default function ResetPassword() {
   const [showNewPassword, setShowNewPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
   const [errors, setErrors] = useState({});
-  const [passwordStrength, setPasswordStrength] = useState('');
-
-  const calculatePasswordStrength = (password) => {
-    if (!password) return '';
-    if (password.length < 6) return 'weak';
-    if (password.length < 10) return 'medium';
-    if (
-      password.length >= 10 &&
-      /(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])/.test(password)
-    ) {
-      return 'strong';
-    }
-    return 'medium';
-  };
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -35,10 +21,6 @@ export default function ResetPassword() {
       ...prev,
       [name]: value,
     }));
-
-    if (name === 'newPassword') {
-      setPasswordStrength(calculatePasswordStrength(value));
-    }
 
     if (errors[name]) {
       setErrors((prev) => ({
@@ -76,81 +58,72 @@ export default function ResetPassword() {
         newPassword: '',
         confirmPassword: '',
       });
-      setPasswordStrength('');
     }
   };
 
   return (
-    <div className="min-h-screen flex flex-col md:flex-row">
-      
-      {/* Left Image */}
-      <div className="relative md:block ">
-        <Image
-          src="/assets/reset-password.png"
-          alt="Island background"
-          fill
-          className="object-cover"
-          priority
-        />
-        <div className="absolute inset-0 bg-gradient-to-br from-teal-500/20 to-blue-600/20 z-10" />
-      </div>
+    <div className="min-h-screen bg-gray-50 flex items-center justify-center px-4 py-8">
+      <div className="max-w-6xl w-full grid lg:grid-cols-2 gap-8 items-center">
 
-      {/* Right Form Section */}
-     <div className="w-full md:w-1/2 flex items-center justify-center bg-gray-100 p-10">
-  <div className="w-full max-w-2xl bg-white rounded-[40px] shadow-xl p-16">
-          {/* ===== HEADER FIXED ===== */}
-          <div className="mb-12">
+        {/* LEFT IMAGE */}
+        <div className="hidden lg:block">
+          <img
+            src="/assets/reset-password.png"
+            alt="Island background"
+            className="w-full h-[600px] object-cover rounded-3xl shadow-lg"
+          />
+        </div>
 
-            {/* Top Row: Arrow + Logo */}
-           <div className="relative flex items-center mb-12">
+        {/* RIGHT FORM CARD */}
+        <div className="bg-white rounded-3xl shadow-2xl px-12 py-10 w-full max-w-lg mx-auto">
 
-  {/* Arrow - Left */}
-  <button
-    onClick={() => window.history.back()}
-    className="absolute left-0 text-gray-600 hover:text-gray-900 transition"
-  >
-    <svg
-      xmlns="http://www.w3.org/2000/svg"
-      className="h-6 w-6"
-      fill="none"
-      viewBox="0 0 24 24"
-      stroke="currentColor"
-    >
-      <path
-        strokeLinecap="round"
-        strokeLinejoin="round"
-        strokeWidth={2}
-        d="M15 19l-7-7 7-7"
-      />
-    </svg>
-  </button>
+          {/* Back Arrow and Logo */}
+          <div className="flex items-center justify-between mb-4">
+            <button 
+              onClick={() => window.history.back()}
+              className="text-gray-600 hover:text-gray-900 transition-colors"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                className="h-6 w-6"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M15 19l-7-7 7-7"
+                />
+              </svg>
+            </button>
 
-  {/* Logo + Brand - Perfect Center */}
-  <div className="mx-auto flex items-center gap-3">
-    <div className="w-9 h-9 bg-blue-500 rounded-full flex items-center justify-center">
-      <span className="text-white font-semibold">B</span>
-    </div>
-    <span className="text-gray-800 font-semibold text-xl">
-      BahaMoments
-    </span>
-  </div>
-
-</div>
-
-            {/* Title */}
-            <h1 className="text-4xl md:text-5xl font-bold text-gray-900 text-center">
-              Set a New Password
-            </h1>
-
+            {/* <div className="flex items-center gap-2 mb-4"> */}
+              
+                        <div className="flex justify-center mb-4 mr-32">
+                          <Image
+                            src="/assets/LOGO(bahamas).png"
+                            alt="BahaMoments Logo"
+                            width={130}
+                            height={130}
+                            className="object-contain"
+                          />
+                        </div>
+              
           </div>
-          {/* ===== END HEADER ===== */}
+
+          {/* Title */}
+          <h1 className="text-3xl md:text-4xl font-bold text-center mb-8 text-gray-900">
+            Set a New Password
+          </h1>
 
           {/* Form */}
-          <form onSubmit={handleSubmit} className="space-y-7">
+          <form onSubmit={handleSubmit} className="space-y-4">
 
             {/* New Password */}
             <div>
-              <label className="block text-base font-medium text-gray-700 mb-3">
+              <label className="block text-sm font-medium text-gray-700 mb-1.5">
                 New Password<span className="text-red-500">*</span>
               </label>
 
@@ -161,7 +134,7 @@ export default function ResetPassword() {
                   value={formData.newPassword}
                   onChange={handleInputChange}
                   placeholder="Enter your New Password"
-                  className={`w-full px-5 py-4 pr-14 text-base border-2 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500 ${
+                  className={`w-full bg-white border rounded-lg px-4 py-3 pr-12 outline-none focus:ring-2 focus:ring-[#5BA8C8] focus:border-transparent transition ${
                     errors.newPassword
                       ? 'border-red-500'
                       : 'border-gray-300'
@@ -171,14 +144,14 @@ export default function ResetPassword() {
                 <button
                   type="button"
                   onClick={() => setShowNewPassword(!showNewPassword)}
-                  className="absolute right-5 top-1/2 -translate-y-1/2 text-gray-500"
+                  className="absolute right-4 top-1/2 -translate-y-1/2 text-gray-500 hover:text-gray-700"
                 >
                   {showNewPassword ? <EyeOff size={20} /> : <Eye size={20} />}
                 </button>
               </div>
 
               {errors.newPassword && (
-                <p className="mt-2 text-sm text-red-500">
+                <p className="mt-1.5 text-sm text-red-500">
                   {errors.newPassword}
                 </p>
               )}
@@ -186,7 +159,7 @@ export default function ResetPassword() {
 
             {/* Confirm Password */}
             <div>
-              <label className="block text-base font-medium text-gray-700 mb-3">
+              <label className="block text-sm font-medium text-gray-700 mb-1.5">
                 Confirm Password<span className="text-red-500">*</span>
               </label>
 
@@ -197,7 +170,7 @@ export default function ResetPassword() {
                   value={formData.confirmPassword}
                   onChange={handleInputChange}
                   placeholder="Enter your Confirm Password"
-                  className={`w-full px-5 py-4 pr-14 text-base border-2 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500 ${
+                  className={`w-full bg-white border rounded-lg px-4 py-3 pr-12 outline-none focus:ring-2 focus:ring-[#5BA8C8] focus:border-transparent transition ${
                     errors.confirmPassword
                       ? 'border-red-500'
                       : 'border-gray-300'
@@ -206,17 +179,15 @@ export default function ResetPassword() {
 
                 <button
                   type="button"
-                  onClick={() =>
-                    setShowConfirmPassword(!showConfirmPassword)
-                  }
-                  className="absolute right-5 top-1/2 -translate-y-1/2 text-gray-500"
+                  onClick={() => setShowConfirmPassword(!showConfirmPassword)}
+                  className="absolute right-4 top-1/2 -translate-y-1/2 text-gray-500 hover:text-gray-700"
                 >
                   {showConfirmPassword ? <EyeOff size={20} /> : <Eye size={20} />}
                 </button>
               </div>
 
               {errors.confirmPassword && (
-                <p className="mt-2 text-sm text-red-500">
+                <p className="mt-1.5 text-sm text-red-500">
                   {errors.confirmPassword}
                 </p>
               )}
@@ -225,21 +196,11 @@ export default function ResetPassword() {
             {/* Submit Button */}
             <button
               type="submit"
-              className="w-full bg-blue-500 hover:bg-blue-600 text-white font-semibold py-5 text-lg rounded-xl transition mt-8"
+              className="w-full bg-[#5BA8C8] hover:bg-[#4a97b5] text-white font-semibold py-3.5 rounded-lg transition shadow-sm mt-6"
             >
               Change Password
             </button>
           </form>
-
-          {/* Bottom Link */}
-          <div className="mt-8 text-center">
-            <p className="text-base text-gray-600">
-              Remember your password?{' '}
-              <a href="/login" className="text-blue-500 font-medium">
-                Sign In
-              </a>
-            </p>
-          </div>
 
         </div>
       </div>

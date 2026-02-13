@@ -1,8 +1,8 @@
-const IslandCard = ({ island }) => {
+const IslandCard = ({ island, showDetails = true }) => {
   if (!island) return null;
 
   return (
-    <div className="bg-white rounded-xl overflow-hidden">
+   <div className="bg-white rounded-xl overflow-hidden w-full max-w-[280px] mx-auto flex-shrink-0">
       <div className="h-[260px] w-full overflow-hidden rounded-xl">
         <img
           src={island.image || ""}
@@ -16,27 +16,32 @@ const IslandCard = ({ island }) => {
           {island.title || "Unknown Island"}
         </h3>
 
-        {island.description && (
-          <p className="text-sm text-gray-500 mt-2 leading-relaxed">
-            {island.description}
-          </p>
-        )}
+{showDetails && (
+  <>
+    {island.description && (
+      <p className="text-sm text-[#111827] mt-2 leading-relaxed">
+        {island.description}
+      </p>
+    )}
 
-        {island.rating && (
-          <div className="flex items-center gap-2 mt-3 text-sm">
-            <span className="font-semibold">{island.rating}</span>
-            <span className="text-orange-400">🔥🔥🔥🔥🔥</span>
-            <span className="text-gray-400">
-              ({island.reviews || 0})
-            </span>
-          </div>
-        )}
+    {island.rating && (
+      <div className="flex items-center gap-2 mt-3 text-sm">
+        <span className="font-semibold">{island.rating}</span>
+        <span className="text-orange-400">🔥🔥🔥🔥🔥</span>
+        <span className="text-[#111827]">
+          ({island.reviews || 0})
+        </span>
+      </div>
+    )}
 
-        {island.price && (
-          <p className="text-sm font-semibold mt-2">
-            From ${island.price} Onwards per person
-          </p>
-        )}
+    {island.price && (
+      <p className="text-sm font-semibold mt-2">
+        From ${island.price} Onwards per person
+      </p>
+    )}
+  </>
+)}
+
       </div>
     </div>
   );
